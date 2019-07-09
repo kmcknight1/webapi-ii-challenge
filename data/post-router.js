@@ -4,6 +4,7 @@ const router = express.Router();
 const Posts = require("./db");
 
 router.use(express.json());
+router.use(cors());
 
 router.get("/", (req, res) => {
   Posts.find()
@@ -126,5 +127,17 @@ function isValidPost(post) {
 
   return title && contents;
 }
+
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+
+  Posts.remove(id)
+    .then(deleted => {
+      res.status(200).json({ message: "The post has been removed." });
+    })
+    .catch(error => {
+      res.status(500).json({ error: "The post could not be removed" });
+    });
+});
 
 module.exports = router;
