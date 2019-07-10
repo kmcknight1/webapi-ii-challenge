@@ -22,8 +22,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Super Cool Blog</h1>
-        <span style={{ padding: "0.2rem", backgroundColor: "maroon" }}>
+        <h1 style={{ textShadow: "2.5px 2.5px 2px black" }}>Super Cool Blog</h1>
+        <span
+          style={{
+            padding: "0rem 1.5rem 0rem 1.5rem",
+            backgroundColor: "maroon",
+            borderRadius: "10px",
+            textShadow: "2px 2px 2px black",
+            boxShadow: "2px 2px 2px black",
+            marginBottom: "1rem"
+          }}
+        >
           <p>Welcome to this super cool blog! Check out these amazing posts!</p>
         </span>
         {posts.length === 0 ? (

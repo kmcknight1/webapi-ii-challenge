@@ -4,7 +4,10 @@ import axios from "axios";
 const Comment = props => {
   return (
     <>
-      <p>{props.comment.text}</p>
+      <p>
+        {`${props.index + 1}) `}
+        {props.comment.text}
+      </p>
     </>
   );
 };

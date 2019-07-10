@@ -23,12 +23,21 @@ const Post = props => {
     <div className="post-card" style={{ margin: "1rem 4rem 1rem 4rem" }}>
       <Card>
         <h3>{props.post.title}</h3>
-        <p style={{ color: "maroon", fontWeight: "bold" }}>
+        <p
+          style={{
+            color: "maroon",
+            fontWeight: "bold"
+          }}
+        >
           {props.post.contents}
         </p>
-        {comments.length > 0 && <h4>Comments: </h4>}
-        {comments.map(comment => (
-          <Comment comment={comment} />
+        {comments.length === 0 ? (
+          <p style={{ fontSize: "0.9rem" }}>This post has no comments</p>
+        ) : (
+          <h4>Comments: </h4>
+        )}
+        {comments.map((comment, index) => (
+          <Comment comment={comment} index={index} />
         ))}
       </Card>
     </div>
