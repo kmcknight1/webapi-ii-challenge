@@ -1,9 +1,13 @@
+const cors = require("cors");
+
 const express = require("express");
 
-const Posts = require("./data/db");
+// const Posts = require("./data/db");
 const postsRouter = require("./data/post-router.js");
 
 const server = express();
+server.use(cors());
+server.use(express.json());
 
 server.get("/", (req, res) => {
   res.send(`

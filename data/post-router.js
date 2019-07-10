@@ -1,10 +1,9 @@
-const express = require("express");
-const router = express.Router();
+// const express = require("express");
+const router = require("express").Router();
 
 const Posts = require("./db");
 
-router.use(express.json());
-router.use(cors());
+// router.use(express.json());
 
 router.get("/", (req, res) => {
   Posts.find()
