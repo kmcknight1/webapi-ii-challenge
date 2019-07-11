@@ -77,12 +77,15 @@ router.post("/", (req, res) => {
 
 //<-------------- ?Possible problem? --------------------->
 router.post("/:id/comments", (req, res) => {
+  const { text } = req.body;
+  const { id } = req.params;
+
   if (!isValidComment(req.body)) {
     res
       .status(400)
       .json({ errorMessage: "Please provide text for the comment." });
   } else {
-    Posts.insertComment(req.body)
+    Posts.insertComment({ text: text, post_id: id })
       .then(comment => {
         res.status(201).json(comment);
       })
@@ -116,9 +119,9 @@ router.put("/:id", (req, res) => {
 });
 
 function isValidComment(comment) {
-  const { text, post_id } = comment;
+  const { text } = comment;
 
-  return text && post_id;
+  return text;
 }
 
 function isValidPost(post) {
